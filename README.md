@@ -2,22 +2,41 @@
 
 [![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
 
-gl-matrix's vec4, split into smaller pieces
+Part of a fork of [@toji](http://github.com/toji)'s
+[gl-matrix](http://github.com/toji/gl-matrix) split into smaller pieces: this
+package contains `glMatrix.vec4`.
+
+## Usage
+
+[![NPM](https://nodei.co/npm/gl-vec4.png)](https://nodei.co/npm/gl-vec4/)
+
+### `vec4 = require('gl-vec4')`
+
+Will load all of the module's functionality and expose it on a single
+object. Note that any of the methods may also be required directly
+from their files.
+
+For example, the following are equivalent:
+
+``` javascript
+var scale = require('gl-vec4').scale
+var scale = require('gl-vec4/scale')
+```
 
 ## Usage
 
 [![NPM](https://nodei.co/npm/gl-vec4.png)](https://nodei.co/npm/gl-vec4/)
 
   - [add()](#addoutvec4-avec4-bvec4)
-  - [clone()](#clone-avec4)
+  - [clone()](#cloneavec4)
   - [copy()](#copyoutvec4-avec4)
   - [create()](#create)
-  - [distance()](#distance-avec4-bvec4)
+  - [distance()](#distanceavec4-bvec4)
   - [divide()](#divideoutvec4-avec4-bvec4)
-  - [dot()](#dot-avec4-bvec4)
+  - [dot()](#dotavec4-bvec4)
   - [fromValues()](#fromvaluesxnumber-ynumber-znumber-wnumber)
   - [inverse()](#inverseoutvec4-avec4)
-  - [length()](#length-avec4)
+  - [length()](#lengthavec4)
   - [lerp()](#lerpoutvec4-avec4-bvec4-tnumber)
   - [max()](#maxoutvec4-avec4-bvec4)
   - [min()](#minoutvec4-avec4-bvec4)
@@ -28,8 +47,8 @@ gl-matrix's vec4, split into smaller pieces
   - [scale()](#scaleoutvec4-avec4-bnumber)
   - [scaleAndAdd()](#scaleandaddoutvec4-avec4-bvec4-scalenumber)
   - [set()](#setoutvec4-xnumber-ynumber-znumber-wnumber)
-  - [squaredDistance()](#squareddistance-avec4-bvec4)
-  - [squaredLength()](#squaredlength-avec4)
+  - [squaredDistance()](#squareddistanceavec4-bvec4)
+  - [squaredLength()](#squaredlengthavec4)
   - [subtract()](#subtractoutvec4-avec4-bvec4)
   - [transformMat4()](#transformmat4outvec4-avec4-mmat4)
   - [transformQuat()](#transformquatoutvec4-avec4-qquat)
