@@ -23,9 +23,7 @@ var scale = require('gl-vec4').scale
 var scale = require('gl-vec4/scale')
 ```
 
-## Usage
-
-[![NPM](https://nodei.co/npm/gl-vec4.png)](https://nodei.co/npm/gl-vec4/)
+# API
 
   - [add()](#addoutvec4-avec4-bvec4)
   - [clone()](#cloneavec4)
