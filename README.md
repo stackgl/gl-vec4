@@ -23,7 +23,7 @@ var scale = require('gl-vec4').scale
 var scale = require('gl-vec4/scale')
 ```
 
-# API
+## API
 
   - [add()](#addoutvec4-avec4-bvec4)
   - [clone()](#cloneavec4)
