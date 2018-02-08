@@ -26,34 +26,51 @@ var scale = require('gl-vec4/scale')
 ## API
 
   - [add()](#addoutvec4-avec4-bvec4)
+  - [ceil()](#ceiloutvec4-avec4)
   - [clone()](#cloneavec4)
   - [copy()](#copyoutvec4-avec4)
   - [create()](#create)
   - [distance()](#distanceavec4-bvec4)
+  - [dist()](#distanceavec4-bvec4)
   - [divide()](#divideoutvec4-avec4-bvec4)
+  - [div()](#divideoutvec4-avec4-bvec4)
   - [dot()](#dotavec4-bvec4)
+  - [equals()](#equalsavec4-bvec4)
+  - [exactEquals()](#exactequalsavec4-bvec4)
+  - [floor()](#flooroutvec4-avec4)
+  - [forEach()](#foreachaarraystridenumberoffsetnumbercountnumberfnfunctionargobject)
   - [fromValues()](#fromvaluesxnumber-ynumber-znumber-wnumber)
   - [inverse()](#inverseoutvec4-avec4)
   - [length()](#lengthavec4)
+  - [len()](#lengthavec4)
   - [lerp()](#lerpoutvec4-avec4-bvec4-tnumber)
   - [max()](#maxoutvec4-avec4-bvec4)
   - [min()](#minoutvec4-avec4-bvec4)
   - [multiply()](#multiplyoutvec4-avec4-bvec4)
+  - [mul()](#multiplyoutvec4-avec4-bvec4)
   - [negate()](#negateoutvec4-avec4)
   - [normalize()](#normalizeoutvec4-avec4)
   - [random()](#randomoutvec4-scalenumber)
+  - [round()](#roundoutvec4-avec4)
   - [scale()](#scaleoutvec4-avec4-bnumber)
   - [scaleAndAdd()](#scaleandaddoutvec4-avec4-bvec4-scalenumber)
   - [set()](#setoutvec4-xnumber-ynumber-znumber-wnumber)
   - [squaredDistance()](#squareddistanceavec4-bvec4)
+  - [sqrDist()](#squareddistanceavec4-bvec4)
   - [squaredLength()](#squaredlengthavec4)
+  - [sqrLen()](#squaredlengthavec4)
   - [subtract()](#subtractoutvec4-avec4-bvec4)
+  - [sub()](#subtractoutvec4-avec4-bvec4)
   - [transformMat4()](#transformmat4outvec4-avec4-mmat4)
   - [transformQuat()](#transformquatoutvec4-avec4-qquat)
 
 ## add(out:vec4, a:vec4, b:vec4)
 
   Adds two vec4's
+
+## ceil(out:vec4, a:vec4)
+
+  `Math.ceil` the components of a vec4
 
 ## clone(a:vec4)
 
@@ -73,11 +90,23 @@ var scale = require('gl-vec4/scale')
 
 ## divide(out:vec4, a:vec4, b:vec4)
 
-  Divides two vec4's
+  Divides two vec4's. Aliased as `div`.
 
 ## dot(a:vec4, b:vec4)
 
   Calculates the dot product of two vec4's
+
+## equals(a:vec4, b:vec4)
+
+  Returns whether or not the vectors have approximately the same elements in the same position.
+
+## exactEquals(a:vec4, b:vec4)
+
+  Returns whether or not the vectors exactly have the same elements in the same position (when compared with ===)
+
+## floor(out:vec4, a:vec4)
+
+  `Math.floor` the components of a vec4
 
 ## fromValues(x:Number, y:Number, z:Number, w:Number)
 
@@ -89,7 +118,7 @@ var scale = require('gl-vec4/scale')
 
 ## length(a:vec4)
 
-  Calculates the length of a vec4
+  Calculates the length of a vec4. Aliased as `len`.
 
 ## lerp(out:vec4, a:vec4, b:vec4, t:Number)
 
@@ -105,7 +134,7 @@ var scale = require('gl-vec4/scale')
 
 ## multiply(out:vec4, a:vec4, b:vec4)
 
-  Multiplies two vec4's
+  Multiplies two vec4's. Aliased as `mul`.
 
 ## negate(out:vec4, a:vec4)
 
@@ -118,6 +147,10 @@ var scale = require('gl-vec4/scale')
 ## random(out:vec4, [scale]:Number)
 
   Generates a random vector with the given scale
+
+## round(out:vec4, a:vec4)
+
+  `Math.round` the components of a vec4
 
 ## scale(out:vec4, a:vec4, b:Number)
 
@@ -133,15 +166,15 @@ var scale = require('gl-vec4/scale')
 
 ## squaredDistance(a:vec4, b:vec4)
 
-  Calculates the squared euclidian distance between two vec4's
+  Calculates the squared euclidian distance between two vec4's. Aliased as `sqrDist`.
 
 ## squaredLength(a:vec4)
 
-  Calculates the squared length of a vec4
+  Calculates the squared length of a vec4. Aliased as `sqrLen`.
 
 ## subtract(out:vec4, a:vec4, b:vec4)
 
-  Subtracts vector b from vector a
+  Subtracts vector b from vector a. Aliased as `sub`
 
 ## transformMat4(out:vec4, a:vec4, m:mat4)
 
