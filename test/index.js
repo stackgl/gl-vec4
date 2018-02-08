@@ -1,10 +1,16 @@
 var test = require('tape')
 var vec4 = require('../')
-var EPSILON = 0.000001
+var EPSILON = require('../epsilon')
 
 test('add', function (t) {
   var result = vec4.add([], [0, 1, 2, 3], [4, 5, 6, 7])
   t.deepEqual(result, [4, 6, 8, 10])
+  t.end()
+})
+
+test('ceil', function (t) {
+  var result = vec4.ceil([], [5.2, 6.5, 7.9, 9.1])
+  t.deepEqual(result, [6, 7, 8, 10])
   t.end()
 })
 
@@ -38,9 +44,59 @@ test('divide', function (t) {
   t.end()
 })
 
+test('div', function (t) {
+  var result = vec4.div([], [8, 4, 2, 1], [2, 1, 0.5, 0.25])
+  t.deepEqual(result, [4, 4, 4, 4])
+  t.end()
+})
+
 test('dot', function (t) {
   var result = vec4.dot([3, 4, 5, 6], [7, 8, 9, 10])
   t.deepEqual(result, 158)
+  t.end()
+})
+
+test('equals', function (t) {
+  t.ok(vec4.equals([3 + EPSILON, 5 - EPSILON, 4 + EPSILON, 6 + EPSILON], [3, 5, 4, 6]))
+  t.notOk(vec4.equals([3 + EPSILON * 10, 5, 4, 6], [3, 5, 4, 6]))
+  t.notOk(vec4.equals([3, 5 - EPSILON * 10, 4, 6], [3, 5, 4, 6]))
+  t.notOk(vec4.equals([3, 5, 4 + EPSILON * 10, 6], [3, 5, 4, 6]))
+  t.notOk(vec4.equals([3, 5, 4, 6 + EPSILON * 10], [3, 5, 4, 6]))
+  t.end()
+})
+
+test('exactEquals', function (t) {
+  t.ok(vec4.exactEquals([3, 5, 4, 6], [3, 5, 4, 6]))
+  t.notOk(vec4.exactEquals([3 + EPSILON, 5, 4, 6], [3, 5, 4, 6]))
+  t.notOk(vec4.exactEquals([3, 5 + EPSILON, 4, 6], [3, 5, 4, 6]))
+  t.notOk(vec4.exactEquals([3, 5, 4 + EPSILON, 6], [3, 5, 4, 6]))
+  t.notOk(vec4.exactEquals([3, 5, 4, 6 + EPSILON], [3, 5, 4, 6]))
+  t.end()
+})
+
+test('floor', function (t) {
+  var result = vec4.floor([], [5.2, 6.6, 7.9, 9.1])
+  t.deepEqual(result, [5, 6, 7, 9])
+  t.end()
+})
+
+test('forEach', function (t) {
+  var a = [null,
+    0, 1, 2, 3, null,
+    4, 5, 6, 7, null
+  ]
+
+  function addConstant (out, a, val) {
+    out[0] = a[0] + val
+    out[1] = a[1] + val
+    out[2] = a[2] + val
+    out[3] = a[3] + val
+    return out
+  }
+
+  vec4.forEach(a, 5, 1, 2, addConstant, 7)
+
+  t.deepEqual(a, [null, 7, 8, 9, 10, null, 11, 12, 13, 14, null])
   t.end()
 })
 
@@ -58,6 +114,12 @@ test('inverse', function (t) {
 
 test('length', function (t) {
   var result = vec4.length([3, 4, 5, 6])
+  t.ok(Math.abs(result - 9.273618495495704) < EPSILON)
+  t.end()
+})
+
+test('len', function (t) {
+  var result = vec4.len([3, 4, 5, 6])
   t.ok(Math.abs(result - 9.273618495495704) < EPSILON)
   t.end()
 })
@@ -82,6 +144,12 @@ test('min', function (t) {
 
 test('multiply', function (t) {
   var result = vec4.multiply([], [3, 4, 5, 6], [7, 8, 9, 10])
+  t.deepEqual(result, [21, 32, 45, 60])
+  t.end()
+})
+
+test('mul', function (t) {
+  var result = vec4.mul([], [3, 4, 5, 6], [7, 8, 9, 10])
   t.deepEqual(result, [21, 32, 45, 60])
   t.end()
 })
@@ -122,6 +190,12 @@ test('scaleAndAdd', function (t) {
   t.end()
 })
 
+test('round', function (t) {
+  var result = vec4.round([], [5.2, 6.6, 8.5, 9.1])
+  t.deepEqual(result, [5, 7, 9, 9])
+  t.end()
+})
+
 test('set', function (t) {
   var result = vec4.set([], 3, 4, 5, 6)
   t.deepEqual(result, [3, 4, 5, 6])
@@ -134,14 +208,32 @@ test('squaredDistance', function (t) {
   t.end()
 })
 
+test('sqrDist', function (t) {
+  var result = vec4.sqrDist([3, 4, 5, 6], [7, 8, 9, 10])
+  t.deepEqual(result, 64)
+  t.end()
+})
+
 test('squaredLength', function (t) {
   var result = vec4.squaredLength([3, 4, 5, 6])
   t.deepEqual(result, 86)
   t.end()
 })
 
+test('sqrLen', function (t) {
+  var result = vec4.sqrLen([3, 4, 5, 6])
+  t.deepEqual(result, 86)
+  t.end()
+})
+
 test('subtract', function (t) {
   var result = vec4.subtract([], [3, 4, 5, 6], [7, 8, 9, 10])
+  t.deepEqual(result, [-4, -4, -4, -4])
+  t.end()
+})
+
+test('sub', function (t) {
+  var result = vec4.sub([], [3, 4, 5, 6], [7, 8, 9, 10])
   t.deepEqual(result, [-4, -4, -4, -4])
   t.end()
 })
